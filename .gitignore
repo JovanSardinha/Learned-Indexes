@@ -1,2 +1,6 @@
 ### Pycharm
 .idea/
+venv/
+*.swp
+*.pyc
+
