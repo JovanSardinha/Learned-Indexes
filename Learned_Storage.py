@@ -31,7 +31,7 @@ toStorePath = {
     Distribution.LOGNORMAL: "data/lognormal_t.csv"
 }
 
-# path for write 
+# path for write
 pathString = {
     Distribution.RANDOM: "Random",
     Distribution.BINOMIAL: "Binomial",
@@ -219,7 +219,7 @@ def optimize_storage(do_compare, do_record, threshold, use_threshold, data_part_
                 pre1 = stage_size - 1
             pre2 = trained_index[1][pre1].predict(pre_data)
             if pre2 > store_block_num:
-                pre2 = store_block_num            
+                pre2 = store_block_num
             if pre2 <= last_pre:
                 continue
             if pre2 >= store_block_num - 1:
@@ -245,12 +245,12 @@ def optimize_storage(do_compare, do_record, threshold, use_threshold, data_part_
         # move data to new position
         for i in range(data_part_num, 0, -1):
             block_pos -= int(round(data_density[i - 1] * total_data_num))
-            if block_pos <= 0:                
-                data_optimization_pos.insert(0, 0)                
+            if block_pos <= 0:
+                data_optimization_pos.insert(0, 0)
                 data_free_pos.insert(0, data_density_pos[i])
                 break
             # record first data position in every data segment
-            data_optimization_pos.insert(0, block_pos)            
+            data_optimization_pos.insert(0, block_pos)
             # move data to new position
             store_data[block_pos: block_pos + data_density_pos[i] - data_density_pos[i - 1]] = \
                 store_data[data_density_pos[i - 1]:data_density_pos[i]]
@@ -282,7 +282,7 @@ def optimize_storage(do_compare, do_record, threshold, use_threshold, data_part_
         move_steps = len(train_set_x)
         # test optimization
         print("************With Optimization**************")
-        start_time = time.time()        
+        start_time = time.time()
         for i in range(to_store_data.shape[0]):
             pre_data = to_store_data.ix[i, 0]
             # calculate isertion position
@@ -433,7 +433,7 @@ def main(argv):
                 show_help_message('noDistributionError')
                 return
             do_create = not (int(arg) == 0)
-        
+
         elif opt == '-r':
             if not is_distribution:
                 show_help_message('noDistributionError')
